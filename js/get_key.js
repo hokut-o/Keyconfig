@@ -71,7 +71,7 @@ var keyId = {
 	"U+007C" : "|",
 	"U+007D" : "}",
 	"U+007F" : "Delete",
-	/* unsupported  
+	/* unsupported
 	"U+00A1" : "RevExcl",
 	"U+0300" : "CombGrave",
 	"U+0300" : "CombAcute",
@@ -130,16 +130,16 @@ var shiftWinkeys = {
 	"U+0039":")"
 };
 function get_key(evt){
-	var key = keyId[evt.keyIdentifier] || winkeys[evt.keyIdentifier] || evt.keyIdentifier,
+	var key = keyId[evt.key] || winkeys[evt.key] || evt.key,
 	ctrl = evt.ctrlKey ? 'C-' : '',
 	meta = (evt.metaKey || evt.altKey) ? 'M-' : '',
 	shift = evt.shiftKey ? 'S-' : '';
-	if (evt.shiftKey && shiftWinkeys[evt.keyIdentifier]) key = shiftWinkeys[evt.keyIdentifier];
+	if (evt.shiftKey && shiftWinkeys[evt.key]) key = shiftWinkeys[evt.key];
 	if (/^(Meta|Shift|Control|Alt)$/.test(key)) return key;
 	if (evt.shiftKey){
-		if (/^[a-z]$/.test(key)) 
+		if (/^[a-z]$/.test(key))
 			return ctrl+meta+key.toUpperCase();
-		if (/^(Enter|Space|BackSpace|Tab|Esc|Home|End|Left|Right|Up|Down|PageUp|PageDown|Delete|F\d\d?)$/.test(key)) 
+		if (/^(Enter|Space|BackSpace|Tab|Esc|Home|End|Left|Right|Up|Down|PageUp|PageDown|Delete|F\d\d?)$/.test(key))
 			return ctrl+meta+shift+key;
 	}
 	return ctrl+meta+key;

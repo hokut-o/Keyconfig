@@ -137,11 +137,11 @@
   var shiftKeysfix = /linux/i.test(navigator.platform) ? shiftLinuxkeys : shiftWinkeys;
 
   function get_key(evt) {
-    var key = keyId[evt.keyIdentifier] || winkeys[evt.keyIdentifier] || evt.keyIdentifier,
+    var key = keyId[evt.key] || winkeys[evt.key] || evt.key,
       ctrl = evt.ctrlKey ? 'C-' : '',
       meta = (evt.metaKey || evt.altKey) ? 'M-' : '',
       shift = evt.shiftKey ? 'S-' : '';
-    if (evt.shiftKey && shiftKeysfix[evt.keyIdentifier]) key = shiftKeysfix[evt.keyIdentifier];
+    if (evt.shiftKey && shiftKeysfix[evt.key]) key = shiftKeysfix[evt.key];
     if (/^(Meta|Shift|Control|Alt)$/.test(key)) return key;
     if (evt.shiftKey) {
       if (/^[a-z]$/.test(key))
